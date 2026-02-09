@@ -8,30 +8,30 @@ import autoprefixer from 'autoprefixer';
 import path from 'path';
 
 export const configOptions: UserConfig = {
-  base: process.env.DF_CLIENT_PUBLIC_PATH || '/df/file',
-  assetsInclude: ['**/*.svg'],
+  base: process.env.DF_CLIENT_PUBLIC_PATH || `/df/file`,
+  assetsInclude: [`**/*.svg`],
   plugins: [react(), viteTsconfigPaths(), ViteYaml({ schema: JSON_SCHEMA })],
   css: {
     devSourcemap: true,
     modules: {
-      localsConvention: 'camelCaseOnly',
+      localsConvention: `camelCaseOnly`,
     },
     postcss: {
       plugins: [autoprefixer()],
     },
     preprocessorOptions: {
       scss: {
-        includePaths: ['../node_modules/@uswds', '../node_modules/@uswds/uswds/packages'],
-        silenceDeprecations: ['legacy-js-api'],
+        includePaths: [`../node_modules/@uswds`, `../node_modules/@uswds/uswds/packages`],
+        silenceDeprecations: [`legacy-js-api`],
       },
     },
   },
   test: {
     globals: true,
-    environment: 'happy-dom',
-    setupFiles: './src/test/setup.ts',
+    environment: `happy-dom`,
+    setupFiles: `./src/test/setup.ts`,
   },
-  envPrefix: ['VITE', 'REACT_APP'],
+  envPrefix: [`VITE`, `REACT_APP`],
   server: {
     port: 3000,
     proxy: {
@@ -59,7 +59,7 @@ export const configOptions: UserConfig = {
             })
           );
           res.end();
-          return 'Bypassed'; // string return value prevents this from going to the original req.target
+          return `Bypassed`; // string return value prevents this from going to the original req.target
         },
       },
     },
@@ -67,7 +67,7 @@ export const configOptions: UserConfig = {
   resolve: {
     preserveSymlinks: true,
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      '@': path.resolve(__dirname, `src`),
     },
   },
   // This causes the js-factgraph-scala library to end up in vite's cache, where it won't
@@ -79,7 +79,7 @@ export const configOptions: UserConfig = {
   // However, we can add "force" here to blow away the vite cache every time we run "npm start".
   // It blows away the cache, and only seems to come with a ~50ms penalty on npm start. This should
   // prevent developers from ever having an outdated factgraph-scala javascript file.
-  optimizeDeps: { needsInterop: ['@irs/js-factgraph-scala'], force: true },
+  optimizeDeps: { needsInterop: [`@irs/js-factgraph-scala`], force: true },
   build: {
     /**
      * More on why this is needed with Vite:
@@ -89,11 +89,11 @@ export const configOptions: UserConfig = {
      * Todo: figure out if a separate development environment browserlist is
      * needed.
      */
-    target: browserslistToEsbuild(['>0.2%', 'not dead', 'not op_mini all']),
+    target: browserslistToEsbuild([`>0.2%`, `not dead`, `not op_mini all`]),
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, 'index.html'),
-        'all-screens': path.resolve(__dirname, 'all-screens/index.html'),
+        main: path.resolve(__dirname, `index.html`),
+        'all-screens': path.resolve(__dirname, `all-screens/index.html`),
       },
     },
   },

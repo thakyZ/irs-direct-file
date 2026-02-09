@@ -41,12 +41,12 @@ export default defineConfig({
   ...{
     plugins: [...(configOptions.plugins as PluginOption[]), viteSingleFile()],
     build: {
-      outDir: 'dist-all-screens',
-      target: browserslistToEsbuild(['>0.2%', 'not dead', 'not op_mini all']),
+      outDir: `dist-all-screens`,
+      target: browserslistToEsbuild([`>0.2%`, `not dead`, `not op_mini all`]),
       modulePreload: false,
       rollupOptions: {
         input: {
-          main: path.resolve(__dirname, 'all-screens/index.html'),
+          main: path.resolve(__dirname, `all-screens/index.html`),
         },
         output: {
           intro: `

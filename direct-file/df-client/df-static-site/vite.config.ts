@@ -9,13 +9,17 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: process.env.SCREENER_PUBLIC_PATH || '/',
-  assetsInclude: ['**/*.svg'],
-  plugins: [react(), viteTsconfigPaths(), ViteYaml({ schema: JSON_SCHEMA })],
+  base: process.env.SCREENER_PUBLIC_PATH || `/`,
+  assetsInclude: [`**/*.svg`],
+  plugins: [
+    react(),
+    viteTsconfigPaths({ projects: [`./tsconfig.json`, `./tsconfig.base.json`] }),
+    ViteYaml({ schema: JSON_SCHEMA }),
+  ],
   css: {
     devSourcemap: true,
     modules: {
-      localsConvention: 'camelCaseOnly',
+      localsConvention: `camelCaseOnly`,
     },
     postcss: {
       plugins: [autoprefixer()],
@@ -28,8 +32,8 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    environment: 'happy-dom',
-    setupFiles: './src/test/setup.ts',
+    environment: `happy-dom`,
+    setupFiles: `./src/test/setup.ts`,
   },
   server: {
     port: 3500,
@@ -37,10 +41,10 @@ export default defineConfig({
   resolve: {
     preserveSymlinks: true,
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      '@': path.resolve(__dirname, `src`),
     },
   },
-  envPrefix: ['STATIC_SITE'],
+  envPrefix: [`STATIC_SITE`],
   build: {
     /**
      * More on why this is needed with Vite:
@@ -50,6 +54,6 @@ export default defineConfig({
      * Todo: figure out if a separate development environment browserlist is
      * needed.
      */
-    target: browserslistToEsbuild(['>0.2%', 'not dead', 'not op_mini all']),
+    target: browserslistToEsbuild([`>0.2%`, `not dead`, `not op_mini all`]),
   },
 });
