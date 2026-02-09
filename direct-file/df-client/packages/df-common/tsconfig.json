@@ -1,16 +1,4 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "types": ["vite/client", "node"],
-    "outDir": "./dist",
-    "composite": true,
-    "rootDir": "./src",
-    "paths": {
-      "eslint-plugin-df-rules": ["../../eslint-plugin-df-rules/src"]
-    },
-    "noEmit": true
-  },
-  "include": ["src"],
-  "exclude": ["node_modules"],
-  "references": [{ "path": "../../eslint-plugin-df-rules" }]
+  "extends": "./tsconfig.base.json",
+  "include": ["src"]
 }

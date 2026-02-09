@@ -1,7 +1,9 @@
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": true,
+    "project": {
+      "tsconfig": "./tsconfig.lint.json"
+    },
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true

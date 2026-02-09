@@ -1,12 +1,4 @@
 {
-  "extends": "../tsconfig.base.json",
-  "compilerOptions": {
-    "types": ["vite/client", "@modyfi/vite-plugin-yaml/modules"],
-    "noEmit": true,
-    "paths": {
-      "eslint-plugin-df-rules": ["../eslint-plugin-df-rules/src"],
-      "@trussworks/react-uswds/*": ["../node_modules/@trussworks/react-uswds/*"]
-    }
-  },
+  "extends": "./tsconfig.base.json",
   "include": ["src", "../node_modules/vitest/globals.d.ts"]
 }
