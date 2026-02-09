@@ -4,8 +4,7 @@
     "types": ["vite/client", "@modyfi/vite-plugin-yaml/modules"],
     "noEmit": true,
     "paths": {
-      "eslint-plugin-df-rules": ["../eslint-plugin-df-rules/src"],
-      "@trussworks/react-uswds/*": ["../node_modules/@trussworks/react-uswds/*"]
+      "eslint-plugin-df-rules": ["../eslint-plugin-df-rules/src"]
     }
   }
 }
